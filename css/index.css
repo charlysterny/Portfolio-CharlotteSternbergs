@@ -150,11 +150,11 @@ a:hover{
     cursor: pointer;
 }
 .action_btn_first:hover{
-    scale: 1.05;
+    transform: scale(1.05);
     color:var(--white);
 }
 .action_btn_first:active{
-    scale:0.95
+    transform: scale(0.95);
 }
 .action_btn_second{
     color:var(--white);
@@ -167,11 +167,11 @@ a:hover{
     cursor: pointer;
 }
 .action_btn_second:hover{
-    scale: 1.05;
+    transform: scale(1.05);
     color:var(--white);
 }
 .action_btn_second:active{
-    scale:0.95
+    transform: scale(0.95);
 }
 .info-container{
     margin: auto;
@@ -583,7 +583,7 @@ footer{
 }
 .container-proyects-box .card-proyectos:hover .proyectos-imgbox{
     top:-100px;
-    scale:0.90;
+    transform: scale(0.90);
 }
 .container-proyects-box .card-proyectos .proyectos-imgbox img{
     position: absolute;
