@@ -1,0 +1,818 @@
+    /* ======== RESET ======== */
+
+* {
+    box-sizing: border-box;
+    }
+    
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+    display: block;
+    }
+    
+    body {
+    line-height: 1;
+    font-family: 'Rubik', sans-serif;
+    
+    line-height: 1.5;
+    }
+    
+    ol, ul {
+    list-style: none;
+    }
+    
+    blockquote, q {
+    quotes: none;
+    }
+    
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+    content: '';
+    content: none;
+    }
+    
+    table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+    
+    a {
+    color:inherit;
+    text-decoration: none;
+    }
+    
+    img {
+    width: 100%;
+    
+    display: inline-block;
+    }
+
+    /* ======== END RESET ======== */
+
+    /* ======== Style de la pagina Web ======== */
+
+:root {
+    --black: #000000;
+    --grey:#444444;
+    --white: #ffffff;
+    --blue: #2c32e9;
+    --violet: #b72ce9;
+}
+.wrapp{
+    max-width:100%; 
+    padding: 1rem 0 1rem;
+}
+
+h1{
+    color: var(--white);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 8em;
+    font-weight: normal;
+    line-height: 1.15em;
+}
+  
+h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 4em;
+    font-weight: normal;
+    line-height: 1.15em;
+}
+
+h3{
+    color:var(--white);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2em;
+    font-weight: normal;
+    line-height: 1.15em;
+}
+p{
+    color: var(--white);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.2em;
+    font-weight: normal;
+    line-height: 2em;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+/* ======== Clases CSS reutilizadas ======== */
+
+.container{
+    max-width: 1120px;
+    height: 100vh;
+    margin-inline: 1.5rem;
+}
+a{
+    font-size: 1.2rem;
+}
+a:hover{
+    color:var(--blue);
+}
+.action_btn_first{
+    background-color:var(--blue);
+    color:var(--white);
+    padding: 0.8rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.action_btn_first:hover{
+    scale: 1.05;
+    color:var(--white);
+}
+.action_btn_first:active{
+    scale:0.95
+}
+.action_btn_second{
+    color:var(--white);
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--white);
+    outline: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.action_btn_second:hover{
+    scale: 1.05;
+    color:var(--white);
+}
+.action_btn_second:active{
+    scale:0.95
+}
+.info-container{
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(390px,1fr));
+    gap: 0 1rem;
+}
+
+
+/* ======== Header de la pagina Web principal ======== */
+
+header {
+    position:relative;
+    padding: 0 2rem;
+}
+
+/* Barra de navegacion de la pagina Web */
+
+.navbar{
+    width:100%;
+    height:60px;
+    max-width: 1200px;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .header__logo a{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navbar .header__logo a:hover{
+    font-size: 2rem;
+    font-weight: bold;
+    color:var(--violet)
+}
+.navbar .navbar-links{
+    display: flex;
+    gap:2rem;
+}
+
+/* Boton en barra de la navegacion de la pagina Web */
+
+.navbar .toggle_btn{
+    color:var(--white);
+    font-size: 1rem;
+    cursor:pointer;
+    display:none;
+}
+
+/* Menu que baja header */
+
+.baja_menu{
+    display: none;
+    position: absolute;
+    right:2rem;
+    top:60px;
+    width: 300px;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.115);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.baja_menu.abrir{
+    height:240px;
+}
+.baja_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.baja_menu li .action_btn_first{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ======== Aqui empieza el banner ======== */
+
+.container-banner{
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.container-banner-item{
+    display: inline-flex;
+}
+.container-banner-item .static-texto{
+   font-size: 60px;
+   font-weight: 400;
+}
+.container-banner-item .dynamic-texto{
+    margin-left: 30px;
+    height: 90px;
+    line-height: 90px;
+    overflow: hidden;
+}
+.dynamic-texto li{
+    color: var(--blue);
+    font-size: 60px;
+    font-weight: 400;
+    top: 0;
+    position: relative;
+    animation: slide 9s steps(5) infinite;
+}
+.dynamic-texto li span{
+    position: relative;
+}
+.dynamic-texto li span::after{
+    content: "";
+    position: absolute;
+    background: var(--black);
+    height:110%;
+    left: 0;
+    width: 100%;
+    border-left: 2px solid var(--violet);
+    animation: escribir 8s infinite;
+}
+
+
+/* ======== Aqui empieza la parte de container grid texto ======== */
+
+.container-proyectos-block{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem;
+    gap:1rem;
+    padding:3rem;
+}
+.proyectos-block-row{
+    display: flex;
+    gap:1rem;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+.proyectos-block-row-block{
+    display: flex;
+    gap:1rem;
+    flex-flow: column wrap;
+    min-width: 200px;
+    flex-grow: 1;
+    flex-basis: 0;
+    border:solid 1px var(--violet);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: .3s;
+
+}
+.proyectos-block-row-block h3{
+    font-size: 1.2em;
+    text-align: center;
+}
+.proyectos-block-row-block:hover{
+    background-color: var(--blue);
+    color: var(--white);
+}
+  
+.proyectos-block-row-block:hover h3{
+    color: var(--white);
+}
+
+/* ===== Aqui empieza el container con Can i help you ===== */
+
+
+.info-container .info-text{
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: start;
+    padding: 2rem;
+    gap: 1rem;
+}
+.info-container .info-social-links{
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: end;
+    align-items: end;
+    text-align: end;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+/* ======== Aqui empieza el container services ======== */
+
+.services-menu-text{
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: end;
+    align-items: end;
+    text-align: end;
+    padding: 2rem;
+    gap: 1rem;
+    
+}
+.services-menu-text .menu-text{
+    margin: 60px auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.services-menu-text .menu-text li{
+    margin: 20px;
+    padding:10px;
+    border-radius:8px;
+    background: var(--blue);
+    box-shadow:
+    6px 6px 10px -1px rgba(183, 44, 233, 0.7),
+    -6px -6px 10px -1px rgba(44, 50, 233, 0.7);
+}
+.services-menu-text .menu-text li label{
+    display:flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+label::before{
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+input[type="radio"]{
+    display: none;
+}
+
+.services-menu-text .menu-text .contenido{
+    color:var(--white);
+    padding: 0 10px;
+    line-height: 26px;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+/* Drop down services*/
+
+.menu-text input[type="radio"]:checked + label + .contenido{
+    max-height: 400px;
+    padding: 10px 10px 20px;
+}
+.menu-text input[type="radio"]:checked + label::before{
+    content:'-';
+}
+
+
+/* ======== Container contact me ======== */
+
+.info-container-contact{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.contact-izquierda{
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    gap:20px;
+}
+.contact-izquierda-title h2{
+    margin-bottom: 5px;
+}
+.contact-izquierda-title hr{
+    border:none;
+    width: 100%;
+    height: 5px;
+    background-color: var(--blue);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.contact-inputs{
+    width: 400px;
+    height:50px;
+    border:none;
+    outline: none;
+    padding-left:25px;
+    font-weight: 500;
+    border-radius: 50px;
+    color:black;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.2em;
+}
+.contact-izquierda textarea{
+    color: var(--black);
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px;
+}
+.contact-inputs:focus{
+    border: 2px solid var(--blue);
+}
+.contact-inputs::placeholder{
+  color: var(--blue);
+}
+.contact-izquierda button{
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    gap: 10px;
+    border: 2px solid var(--white);
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Source Code Pro', monospace;
+    background-color: #000000;
+    color: #ffffff;
+}
+.contact-derecha{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-derecha h2{
+    color: var(--violet);
+}
+
+
+/* ======== Aqui empieza el footer ======== */
+
+footer{
+    border-top-left-radius: 125px;
+    background: linear-gradient(to right,var(--violet), var(--blue));
+}
+.container-footer{
+    min-width: 196px;
+    margin: 2rem 9rem 0 9rem;
+    padding: 30px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    gap:2rem;
+}
+.container-footer a{
+    font-weight: 700;
+}
+
+
+/* ======== Index About me - Contenido ======== */
+
+.info-container .info-text img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+/* ======== Aqui empieza la section proyectos ======== */
+
+.container-proyects{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin: auto;
+    padding: 4rem;
+}
+.container-proyects-box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px 50px;
+    padding: 100px 50px;
+}
+.container-proyects-box .card-proyectos{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 450px;
+    height: 350px;
+    background-color: #1e1e1e;
+    border-radius: 20px;
+    border: 2px solid var(--violet);
+    box-shadow: 0 35px 80px rgba(103, 103, 103, 0.15);
+    transition: 0.5s;
+}
+.container-proyects-box .card-proyectos:hover{
+    height:500px;
+}
+.container-proyects-box .card-proyectos .proyectos-imgbox{
+    position: absolute;
+    top:20px;
+    width: 300px;
+    height: 220px;
+    background-color: var(--white);
+    border-radius: 10px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+.container-proyects-box .card-proyectos:hover .proyectos-imgbox{
+    top:-100px;
+    scale:0.90;
+}
+.container-proyects-box .card-proyectos .proyectos-imgbox img{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.container-proyects-box .card-proyectos .proyectos-contentidobox{
+    position: absolute;
+    top: 252px;
+    width: 100%;
+    height: 35px;
+    padding: 0 30px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.container-proyects-box .card-proyectos:hover .proyectos-contentidobox{
+    height: 250px;
+    top: 130px;
+}
+.container-proyects-box .card-proyectos .proyectos-contentidobox h2{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--violet);
+}
+.container-proyects-box .card-proyectos .proyectos-contentidobox p{
+    color:var(--white);
+}
+.container-proyects-box .card-proyectos .proyectos-contentidobox a{
+    position: relative;
+    top: 15px;
+    display: inline-block;
+    background-color:var(--blue);
+    color:var(--white);
+    padding: 0.8rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.container-proyects-box .container-proyects-box{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+    gap:15px;
+}
+
+
+/* ======== Aqui empieza la el container servicios ======== */
+
+.container-services{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: left;
+    padding: 4rem 4rem 0 4rem;
+    gap: 3rem;
+  }
+  .container-services .services-cards{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+    gap:15px;
+    padding:2em;
+}
+.services-card-block{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    border-radius: 5px;
+    border-left: 2px solid var(--violet);
+    padding: 36px 26px;
+    border-radius: 20px;
+    padding: 2em;
+
+}
+
+
+/* ======== Header de la pagina Web secundaria works ======== */
+
+.header-segunda{
+    position:relative;
+    padding: 0 2rem;
+}
+.navbar-segunda{
+    width:100%;
+    height:60px;
+    max-width: 1200px;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-segunda .header__logo a{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navbar-segunda .header__logo a:hover{
+    font-size: 2rem;
+    font-weight: bold;
+    color:var(--violet)
+}
+
+
+/* ======== Galeria slider de la pagina Web secundaria single project ======== */
+
+.work-single-project{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    min-height: 100vh;
+    padding: 4rem;
+    gap:2rem;
+}
+.container-single-project{
+    max-width: 1200px;
+    width: 95%;
+
+}
+.slider-wrapper .img-list{
+    display: grid;
+    gap:18px;
+    font-size: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    margin-bottom: 30px;
+}
+.slider-wrapper .img-list .img-item{
+    width: 550px;
+    object-fit: cover;
+}
+.slider-wrapper .img-list .img-item img{
+    object-fit:none;
+}
+.container-single-project .slider-scroolbar{
+    height: 24px;
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+  .container-single-project:hover .slider-scroolbar{
+    height: 5px;
+}
+.slider-scroolbar .scroolbar-track{
+    height: 2px;
+    width:100%;
+    position: relative;
+    border-radius: 5px;
+}
+ .slider-scroolbar .scroolbar-thumb:active{
+    cursor: grabbing;
+    height:9px;
+    top: -2px;
+}
+.slider-scroolbar .scroolbar-thumb{
+    position: absolute;
+    height: 100%;
+    width:50%;
+    border-radius: inherit;
+    cursor: grab;
+}
+.slider-scroolbar .scroolbar-thum::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
+
+ 
+/* ======== Animation design ======== */
+/* Animation del BANNER de escribir  */
+
+@keyframes escribir {
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 40px;
+    }
+}
+@keyframes slide {
+    100%{
+        top: -450px;
+    }
+}
+
+
+/* ======== Responsive design ======== */
+/* Responsive design HEADER */
+
+@media(max-width: 992px){
+    .navbar .navbar-links,
+    .navbar .action_btn_first{
+        display: none;
+    }
+    .navbar .toggle_btn{
+        display: block;
+    }
+    .baja_menu{
+        display: block;
+    }
+}
+@media(max-width: 576px){
+    .baja_menu{
+        left: 2rem;
+        width: unset;
+    }
+}
+
+/* Responsive Form */
+@media (max-width: 800px){
+    .contact-inputs{
+        width: 80vw;
+    }
+}
+
+@media (max-width: 992px){
+    .navbar-segunda .header__logo a, .navbar-segunda .header__logo a:hover{
+        font-size: 0.8rem;
+}
+}
